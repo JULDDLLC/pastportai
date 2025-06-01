@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PastPortAI - Experience History Like Never Before</title>
+    <meta name="description" content="AI-powered historical experiences in immersive 3D environments. Step into the Titanic, explore Ancient Rome, and live history through cutting-edge technology.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Custom Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-ship brand-icon"></i>
+                <span class="brand-text">PastPortAI</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#experiences" class="nav-link">Experiences</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#resources" class="nav-link">Resources</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="cta-button">Start Free Trial</button>
+            </div>
+            
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <canvas id="heroCanvas"></canvas>
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Experience History
+                    <span class="gradient-text">Like Never Before</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Step aboard the Titanic, explore Ancient Rome, witness the Moon Landing. 
+                    AI-powered historical experiences that make learning unforgettable.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Historical Experiences</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5.4M</span>
+                        <span class="stat-label">Homeschool Families</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">AI</span>
+                        <span class="stat-label">Powered Content</span>
+                    </div>
+                </div>
+                
+                <div class="hero-actions">
+                    <button class="primary-button" id="startExperience">
+                        <i class="fas fa-play"></i>
+                        Start Your Journey
+                    </button>
+                    <button class="secondary-button" id="downloadPDR">
+                        <i class="fas fa-download"></i>
+                        Download PDR
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="titanic-preview">
+                    <canvas id="titanicCanvas"></canvas>
+                    <div class="audio-controls">
+                        <button class="audio-toggle" id="audioToggle">
+                            <i class="fas fa-volume-up"></i>
+                            <span>Experience Audio</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Revolutionary Learning Technology</h2>
+                <p>Built for homeschoolers, educators, and history enthusiasts</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Narratives</h3>
+                    <p>Every experience is unique. AI generates personalized historical scenarios tailored to your learning style.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Immersive 3D Worlds</h3>
+                    <p>Explore historically accurate 3D environments with stunning visuals and spatial audio.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile-First Design</h3>
+                    <p>Works perfectly on any device. No special hardware or downloads required.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Homeschool Ready</h3>
+                    <p>Designed by homeschoolers for homeschoolers. Flexible curriculum integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Historical Experiences</h2>
+                <p>Live history through multiple perspectives and AI-generated scenarios</p>
+            </div>
+            
+            <div class="experience-showcase">
+                <!-- Featured Experience -->
+                <div class="featured-experience">
+                    <div class="experience-visual">
+                        <canvas id="experienceCanvas"></canvas>
+                        <div class="experience-overlay">
+                            <div class="experience-badge">Now Available</div>
+                            <h3>Titanic: Voyage of Discovery</h3>
+                            <p>Experience the most famous maritime disaster through 5 different perspectives</p>
+                            <button class="experience-button">
+                                <i class="fas fa-play"></i>
+                                Experience Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coming Soon Grid -->
+                <div class="coming-soon-grid">
+                    <h3>Coming Soon</h3>
+                    <div class="coming-soon-items">
+                        <div class="coming-soon-item">
+                            <i class="fas fa-landmark"></i>
+                            <span>Ancient Rome</span>
+                            <div class="release-date">Week 2</div>
+                        </div>
+                        <div class="coming-soon-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Moon Landing</span>
+                            <div class="release-date">Week 3</div>
+                        </div>
+                        <div class="coming-soon-item">
+                            <i class="fas fa-castle"></i>
+                            <span>Medieval Castle</span>
+                            <div class="release-date">Week 4</div>
+                        </div>
+                        <div class="coming-soon-item">
+                            <i class="fas fa-volcano"></i>
+                            <span>Pompeii Eruption</span>
+                            <div class="release-date">Month 2</div>
+                        </div>
+                        <div class="coming-soon-item">
+                            <i class="fas fa-statue-of-liberty"></i>
+                            <span>Ellis Island</span>
+                            <div class="release-date">Month 2</div>
+                        </div>
+                        <div class="coming-soon-item">
+                            <i class="fas fa-plane"></i>
+                            <span>D-Day Landing</span>
+                            <div class="release-date">Month 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Adventure</h2>
+                <p>Affordable pricing designed for families and educators</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Explorer</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">0</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>1 Historical Experience</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Basic 3D Exploration</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Mobile Access</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Community Support</span>
+                        </div>
+                    </div>
+                    <button class="pricing-button">Start Free</button>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Time Traveler Pro</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">7.97</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>All Historical Experiences</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>AI-Generated Scenarios</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Immersive Audio</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Multiple Perspectives</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Progress Tracking</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Homeschool Resources</span>
+                        </div>
+                    </div>
+                    <button class="pricing-button primary">Start Pro Trial</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Family Plan</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">19.97</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Up to 6 Family Members</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>All Pro Features</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Parent Dashboard</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Custom Learning Paths</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Priority Support</span>
+                        </div>
+                    </div>
+                    <button class="pricing-button">Choose Family</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Built by Homeschoolers, for Homeschoolers</h2>
+                    <p>PastPortAI was created by a homeschooling grandparent who understood the need for engaging, interactive history education. Traditional textbooks weren't enough - children needed to experience history, not just read about it.</p>
+                    
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="stat-number">400%</span>
+                            <span class="stat-label">Increase in Retention</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number">29 Days</span>
+                            <span class="stat-label">From Idea to Reality</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number">AI-First</span>
+                            <span class="stat-label">Development Approach</span>
+                        </div>
+                    </div>
+                    
+                    <p>Using cutting-edge AI and 3D technology, we've created the world's first platform where students don't just learn about history - they live it. Every experience is personalized, every scenario is unique, and every moment is unforgettable.</p>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="tech-showcase">
+                        <div class="tech-item">
+                            <i class="fab fa-js-square"></i>
+                            <span>Three.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <span>GPT-4</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>WebGL</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Bolt.new</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resources & Documentation</h2>
+                <p>Everything you need to get started with PastPortAI</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Project Definition Report</h3>
+                    <p>Complete technical documentation, market analysis, and revenue projections</p>
+                    <button class="resource-button" id="downloadPDRMain">
+                        <i class="fas fa-download"></i>
+                        Download PDR
+                    </button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-presentation"></i>
+                    </div>
+                    <h3>Presentation Deck</h3>
+                    <p>Full slide deck with market opportunity and technical implementation</p>
+                    <button class="resource-button" id="downloadPresentation">
+                        <i class="fas fa-download"></i>
+                        Download Slides
+                    </button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Marketing Plan</h3>
+                    <p>Comprehensive strategy for homeschool and educational markets</p>
+                    <button class="resource-button" id="downloadMarketing">
+                        <i class="fas fa-download"></i>
+                        Download Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand">
+                        <i class="fas fa-ship"></i>
+                        <span>PastPortAI</span>
+                    </div>
+                    <p>Experience history like never before through AI-powered immersive learning.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#experiences">Experiences</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#features">Features</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#" id="footerPDR">Documentation</a>
+                        <a href="#" id="footerSupport">Support</a>
+                        <a href="#" id="footerBlog">Blog</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#about">About</a>
+                        <a href="#" id="footerContact">Contact</a>
+                        <a href="#" id="footerPrivacy">Privacy</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 JULDD LLC. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio Elements -->
+    <audio id="shipAmbient" loop>
+        <source src="https://www.soundjay.com/misc/sounds/ship-horn-1.wav" type="audio/wav">
+    </audio>
+    
+    <audio id="oceanWaves" loop>
+        <source src="https://www.soundjay.com/nature/sounds/ocean-wave-1.wav" type="audio/wav">
+    </audio>
+
+    <script src="main.js"></script>
+</body>
+</html>
